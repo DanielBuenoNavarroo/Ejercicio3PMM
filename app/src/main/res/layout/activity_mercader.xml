@@ -17,6 +17,37 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
+        android:id="@+id/RecogerBtn"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Comprar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/VenderBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/VenderBtn"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="Vender"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RecogerBtn"
+        app:layout_constraintEnd_toStartOf="@+id/ContinuarBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/RecogerBtn" />
+
+    <Button
+        android:id="@+id/ContinuarBtn"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="Cancelar"
+        app:layout_constraintBaseline_toBaselineOf="@+id/VenderBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/VenderBtn" />
+
+    <Button
         android:id="@+id/ComerciarBtn"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -28,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/ContinuarBtn"
+        android:id="@+id/ContinuarBtn2"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Continuar"
