@@ -16,7 +16,7 @@ class MochilaActivity : AppCompatActivity() {
         binding = ActivityMochilaBinding.inflate(layoutInflater)
         setContentView(binding.root)
          val imageViews = arrayOf(
-
+            binding.imageView1,
             binding.imageView2,
             binding.imageView3,
             binding.imageView4,
@@ -26,7 +26,7 @@ class MochilaActivity : AppCompatActivity() {
             binding.imageView8,
             binding.imageView9
         )
-        imageViews.forEach { it.visibility = View.GONE }
+        imageViews.forEach { it.visibility = View.INVISIBLE }
 
 
 

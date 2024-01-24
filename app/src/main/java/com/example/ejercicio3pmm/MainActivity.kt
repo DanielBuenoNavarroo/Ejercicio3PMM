@@ -20,6 +20,12 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        binding.ContinuarBtn.setOnClickListener {
+            val intent = Intent(this, MercaderActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
 
 
