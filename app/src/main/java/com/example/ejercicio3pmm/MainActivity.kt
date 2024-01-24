@@ -13,16 +13,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //SQL
+        val dbHelper = DatabaseHelper(this)
 
         binding.RecogerBtn.setOnClickListener {
             val intent = Intent(this, MochilaActivity::class.java)
             startActivity(intent)
         }
-
-
-
-
-
-
     }
 }
