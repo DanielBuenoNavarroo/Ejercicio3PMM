@@ -6,18 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".MercaderActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:text="Mercader"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageMercader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:srcCompat="@drawable/merca"
+        android:contentDescription="FotoMercader" />
 
     <Button
-        android:id="@+id/RecogerBtn"
+        android:id="@+id/ComprarBtn"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
@@ -32,13 +44,13 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Vender"
-        app:layout_constraintBaseline_toBaselineOf="@+id/RecogerBtn"
-        app:layout_constraintEnd_toStartOf="@+id/ContinuarBtn"
+        app:layout_constraintBaseline_toBaselineOf="@+id/ComprarBtn"
+        app:layout_constraintEnd_toStartOf="@+id/CancelarBtn"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/RecogerBtn" />
+        app:layout_constraintStart_toEndOf="@+id/ComprarBtn" />
 
     <Button
-        android:id="@+id/ContinuarBtn"
+        android:id="@+id/CancelarBtn"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Cancelar"
@@ -54,12 +66,12 @@
         android:layout_marginBottom="32dp"
         android:text="Comerciar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ContinuarBtn"
+        app:layout_constraintEnd_toStartOf="@+id/CancelarBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/ContinuarBtn2"
+        android:id="@+id/ContinuarBtn"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Continuar"
