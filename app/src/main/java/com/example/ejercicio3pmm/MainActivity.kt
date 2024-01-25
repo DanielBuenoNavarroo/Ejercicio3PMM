@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //INSERTAR DATOS:
-        insertarArticulos()
-        val dbHelper = DatabaseHelper(this)
+        val mochila = Mochila(100)
+
+        val dbHelper = ObjetosAleatorios(this)
         val listaArticulos = dbHelper.getArticulos()
         dbHelper.close()
 
@@ -25,34 +25,20 @@ class MainActivity : AppCompatActivity() {
         imagenObjeto.setImageResource(objeto.getUri())
 
         binding.RecogerBtn.setOnClickListener {
-            Toast.makeText(this, "${objeto.getNombre()} + 1", Toast.LENGTH_SHORT).show()
-            objeto = listaArticulos.random()
-            imagenObjeto.setImageResource(objeto.getUri())
+            if (mochila.getPesoMochila() - objeto.getPeso() > 0){
+                mochila.addArticulo(objeto)
+                Toast.makeText(this, "${objeto.getNombre()} + 1\n Peso restante: ${mochila.getPesoMochila()}", Toast.LENGTH_SHORT).show()
+                objeto = listaArticulos.random()
+                imagenObjeto.setImageResource(objeto.getUri())
+            }else{
+                Toast.makeText(this, "Has superado el peso máximo de tu mochila", Toast.LENGTH_SHORT).show()
+            }
         }
-
 
         binding.ContinuarBtn.setOnClickListener {
             val intent = Intent(this, MercaderActivity::class.java)
             startActivity(intent)
         }
 
-    }
-
-    private fun insertarArticulos() {
-        val dbHelper = DatabaseHelper(this)
-        dbHelper.borrarBaseDeDatos()
-        val listaArticulos = mutableListOf(
-            Articulo("amuleto", "no c", 15, R.drawable.amuleto),
-            Articulo("baston", "no c", 15, R.drawable.baston),
-            Articulo("daga", "no c", 15, R.drawable.daga),
-            Articulo("grimorio", "no c", 15, R.drawable.grimorio),
-            Articulo("huevo", "no c", 15, R.drawable.huevo),
-            Articulo("mapa", "no c", 15, R.drawable.mapa),
-            Articulo("orbe", "no c", 15, R.drawable.orbe),
-            Articulo("pergaminos", "no c", 15, R.drawable.pergaminos),
-            Articulo("pocion", "no c", 15, R.drawable.pocion)
-        )
-        listaArticulos.forEach { dbHelper.insertarArticulo(it) }
-        dbHelper.close()
     }
 }

@@ -1,16 +1,14 @@
 package com.example.ejercicio3pmm
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.ejercicio3pmm.databinding.ActivityMercaderBinding
 
 class MercaderActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMercaderBinding
-    private lateinit var listaArticulos: List<Articulo>
+    private lateinit var listaArticulos: List<Articulos>
     private var currentIndex = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,9 +29,9 @@ class MercaderActivity : AppCompatActivity() {
         textTipo.visibility=View.INVISIBLE
         atrasBtn.visibility=View.INVISIBLE
         adelanteBtn.visibility=View.INVISIBLE
+
         //INSERTAR DATOS:
-        insertarArticulos()
-        val dbHelper = DatabaseHelper(this)
+        val dbHelper = ObjetosAleatorios(this)
         listaArticulos = dbHelper.getArticulos()
         dbHelper.close()
 
@@ -76,8 +74,8 @@ class MercaderActivity : AppCompatActivity() {
             var objeto = listaArticulos.random()
             imagenObj.setImageResource(objeto.getUri())
             binding.textPeso.text = articulo.getPrecio().toString()
-            binding.textNombre.text = articulo.getNombre()
-            binding.textTipo.text = articulo.getTipo()
+            binding.textNombre.text = articulo.getNombre().toString()
+            binding.textTipo.text = articulo.getTipoArticulo().toString()
         }
 
         comprarBtn.setOnClickListener {
@@ -123,33 +121,12 @@ class MercaderActivity : AppCompatActivity() {
 
     }
 
-
-    private fun insertarArticulos() {
-        val dbHelper = DatabaseHelper(this)
-        dbHelper.borrarBaseDeDatos()
-        val listaArticulos = mutableListOf<Articulo>(
-            Articulo("amuleto", "no c", 15, R.drawable.amuleto),
-            Articulo("baston", "no c", 15, R.drawable.baston),
-            Articulo("daga", "no c", 15, R.drawable.daga),
-            Articulo("grimorio", "no c", 15, R.drawable.grimorio),
-            Articulo("huevo", "no c", 15, R.drawable.huevo),
-            Articulo("mapa", "no c", 15, R.drawable.mapa),
-            Articulo("orbe", "no c", 15, R.drawable.orbe),
-            Articulo("pergaminos", "no c", 15, R.drawable.pergaminos),
-            Articulo("pocion", "no c", 15, R.drawable.pocion),
-            Articulo("runas", "no c ", 15, R.drawable.runas)
-        )
-        listaArticulos.forEach { dbHelper.insertarArticulo(it) }
-        dbHelper.close()
-    }
-
-
     private fun mostrarArticuloActual() {
         val articulo = listaArticulos[currentIndex]
         binding.imageView12.setImageResource(articulo.getUri())
         binding.textPeso.text = articulo.getPrecio().toString()
-        binding.textNombre.text = articulo.getNombre()
-        binding.textTipo.text = articulo.getTipo()
+        binding.textNombre.text = articulo.getNombre().toString()
+        binding.textTipo.text = articulo.getTipoArticulo().toString()
     }
 
     private fun anterior(){
