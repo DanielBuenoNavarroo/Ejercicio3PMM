@@ -35,7 +35,7 @@ data class Articulo(
     }
 }
 
-class DatabaseHelper(private val context: Context) :
+    class DatabaseHelper(private val context: Context) :
     SQLiteOpenHelper(context, DATABASE, null, DATABASE_VERSION) {
     companion object {
         private const val DATABASE_VERSION = 1
@@ -47,6 +47,9 @@ class DatabaseHelper(private val context: Context) :
         private const val COLUMN_PRECIO = "precio"
         private const val COLUMN_URI_IMAGEN = "url"
     }
+
+
+
 
     override fun onCreate(db: SQLiteDatabase?) {
         val createTable =
