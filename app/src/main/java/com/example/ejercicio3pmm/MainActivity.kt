@@ -36,7 +36,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.ContinuarBtn.setOnClickListener {
-            val intent = Intent(this, MercaderActivity::class.java)
+            intent = Intent(this, MercaderActivity::class.java)
+            intent.putExtra("mochila", mochila)
             startActivity(intent)
         }
 
