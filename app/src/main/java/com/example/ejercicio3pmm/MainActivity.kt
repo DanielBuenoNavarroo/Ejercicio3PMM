@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val mochila = Mochila(100)
+        mochila.addArticulo(Articulos(Articulos.TipoArticulo.ORO, Articulos.Nombre.MONEDA, 0, 15, 0, 10))
 
         val dbHelper = ObjetosAleatorios(this)
         val listaArticulos = dbHelper.getArticulos()

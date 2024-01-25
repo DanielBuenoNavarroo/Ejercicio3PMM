@@ -83,6 +83,7 @@ class MercaderActivity : AppCompatActivity() {
         comprarBtn.setOnClickListener {
             objscomprar.forEach { it.visibility = View.VISIBLE }
 
+
         }
 
         continuarBtn.setOnClickListener {
