@@ -54,13 +54,16 @@ class MercaderActivity : AppCompatActivity() {
             comprarBtn,
             venderBtn,
             cancelarBtn,
+
+        )
+
+        val objscomprar = arrayOf(
             atrasBtn,
             adelanteBtn,
             imagenObj,
             textPeso,
             textNombre,
             textTipo
-
         )
 
         btns2.forEach { it.visibility = View.INVISIBLE }
@@ -79,7 +82,7 @@ class MercaderActivity : AppCompatActivity() {
         }
 
         comprarBtn.setOnClickListener {
-
+            objscomprar.forEach { it.visibility = View.VISIBLE }
 
         }
 
@@ -103,6 +106,7 @@ class MercaderActivity : AppCompatActivity() {
         venderBtn.setOnClickListener {
             mochilote.visibility= View.VISIBLE
             binding.imageView10.visibility= View.INVISIBLE
+            objscomprar.forEach { it.visibility = View.VISIBLE }
 
 
 
@@ -113,7 +117,9 @@ class MercaderActivity : AppCompatActivity() {
         cancelarBtn.setOnClickListener {
             btns.forEach { it.visibility = View.VISIBLE }
             btns2.forEach { it.visibility = View.INVISIBLE }
+            objscomprar.forEach { it.visibility = View.INVISIBLE }
             binding.imageView10.visibility= View.INVISIBLE
+            binding.imageView2.visibility= View.INVISIBLE
             binding.imageView.visibility= View.VISIBLE
 
 

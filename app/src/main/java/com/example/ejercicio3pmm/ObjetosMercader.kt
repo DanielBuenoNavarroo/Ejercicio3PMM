@@ -26,7 +26,6 @@ class ObjetosMercader(context: Context):
         val createTable =
             "CREATE TABLE IF NOT EXISTS $TABLA_OBJETOS_MERCADER ($KEY_ID INTEGER PRIMARY KEY, $COLUMN_NOMBRE TEXT, $COLUMN_TIPO TEXT, $COLUMN_PESO INTEGER, $COLUMN_PRECIO INTEGER, $COLUMN_URI_IMAGEN INTEGER, $COLUMN_UNIDADES INTEGER)"
         db?.execSQL(createTable)
-
         insertarArticulosDefault(db)
     }
 
