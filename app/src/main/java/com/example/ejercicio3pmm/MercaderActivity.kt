@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.ejercicio3pmm.databinding.ActivityMercaderBinding
 
 class MercaderActivity : AppCompatActivity() {
@@ -16,11 +17,14 @@ class MercaderActivity : AppCompatActivity() {
         binding = ActivityMercaderBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val imagenObj = binding.imageView12
+        val mochilote = binding.imageView2
         val textPeso = binding.textPeso
         val textNombre = binding.textNombre
         val textTipo = binding.textTipo
         val atrasBtn = binding.buttonatras
         val adelanteBtn = binding.buttonadelante
+        binding.imageView.visibility=View.VISIBLE
+        mochilote.visibility= View.INVISIBLE
         imagenObj.visibility=View.INVISIBLE
         textPeso.visibility=View.INVISIBLE
         textNombre.visibility=View.INVISIBLE
@@ -30,7 +34,7 @@ class MercaderActivity : AppCompatActivity() {
         //INSERTAR DATOS:
         insertarArticulos()
         val dbHelper = DatabaseHelper(this)
-        val listaArticulos = dbHelper.getArticulos()
+        listaArticulos = dbHelper.getArticulos()
         dbHelper.close()
 
 
@@ -54,24 +58,42 @@ class MercaderActivity : AppCompatActivity() {
             cancelarBtn,
             atrasBtn,
             adelanteBtn,
-            imagenObj
+            imagenObj,
+            textPeso,
+            textNombre,
+            textTipo
 
         )
+
         btns2.forEach { it.visibility = View.INVISIBLE }
 
         comerciarBtn.setOnClickListener {
+            binding.imageView10.visibility= View.VISIBLE
+            binding.imageView.visibility= View.INVISIBLE
+            val articulo = listaArticulos[currentIndex]
             btns.forEach { it.visibility = View.INVISIBLE }
             btns2.forEach { it.visibility = View.VISIBLE }
             var objeto = listaArticulos.random()
             imagenObj.setImageResource(objeto.getUri())
+            binding.textPeso.text = articulo.getPrecio().toString()
+            binding.textNombre.text = articulo.getNombre()
+            binding.textTipo.text = articulo.getTipo()
         }
 
         comprarBtn.setOnClickListener {
-             binding.imageView.visibility = View.GONE
-
 
 
         }
+
+        continuarBtn.setOnClickListener {
+            btns.forEach { it.visibility = View.INVISIBLE }
+            btns2.forEach { it.visibility = View.INVISIBLE }
+            binding.imageView.visibility= View.INVISIBLE
+            binding.textView.visibility=View.INVISIBLE
+            binding.imageView10.visibility=View.INVISIBLE
+            binding.holapedro.visibility=View.VISIBLE
+        }
+
         binding.buttonadelante.setOnClickListener {
             siguiente()
         }
@@ -80,12 +102,23 @@ class MercaderActivity : AppCompatActivity() {
             anterior()
         }
 
-
-
-
         venderBtn.setOnClickListener {
-            intent = Intent(this@MercaderActivity, MochilaActivity::class.java)
-            startActivity(intent)
+            mochilote.visibility= View.VISIBLE
+            binding.imageView10.visibility= View.INVISIBLE
+
+
+
+
+        }
+
+
+        cancelarBtn.setOnClickListener {
+            btns.forEach { it.visibility = View.VISIBLE }
+            btns2.forEach { it.visibility = View.INVISIBLE }
+            binding.imageView10.visibility= View.INVISIBLE
+            binding.imageView.visibility= View.VISIBLE
+
+
         }
 
     }
@@ -103,7 +136,8 @@ class MercaderActivity : AppCompatActivity() {
             Articulo("mapa", "no c", 15, R.drawable.mapa),
             Articulo("orbe", "no c", 15, R.drawable.orbe),
             Articulo("pergaminos", "no c", 15, R.drawable.pergaminos),
-            Articulo("pocion", "no c", 15, R.drawable.pocion)
+            Articulo("pocion", "no c", 15, R.drawable.pocion),
+            Articulo("runas", "no c ", 15, R.drawable.runas)
         )
         listaArticulos.forEach { dbHelper.insertarArticulo(it) }
         dbHelper.close()

@@ -13,9 +13,6 @@
         android:theme="@style/Theme.Ejercicio3PMM"
         tools:targetApi="31">
         <activity
-            android:name=".MochilaActivity"
-            android:exported="false" />
-        <activity
             android:name=".MercaderActivity"
             android:exported="false" />
         <activity
