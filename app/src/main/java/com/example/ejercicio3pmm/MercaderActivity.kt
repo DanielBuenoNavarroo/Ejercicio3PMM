@@ -30,12 +30,11 @@ class MercaderActivity : AppCompatActivity() {
         atrasBtn.visibility=View.INVISIBLE
         adelanteBtn.visibility=View.INVISIBLE
 
-        //INSERTAR DATOS:
         val dbHelper = ObjetosAleatorios(this)
         listaArticulos = dbHelper.getArticulos()
         dbHelper.close()
 
-
+        val mochila = intent.getSerializableExtra("mochila") as Mochila
 
         val comerciarBtn = binding.ComerciarBtn
         val continuarBtn = binding.ContinuarBtn
