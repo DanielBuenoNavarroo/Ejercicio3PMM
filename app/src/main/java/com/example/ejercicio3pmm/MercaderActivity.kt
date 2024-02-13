@@ -107,10 +107,6 @@ class MercaderActivity : AppCompatActivity() {
             mochilote.visibility= View.VISIBLE
             binding.imageView10.visibility= View.INVISIBLE
             objscomprar.forEach { it.visibility = View.VISIBLE }
-
-
-
-
         }
 
 
@@ -121,8 +117,6 @@ class MercaderActivity : AppCompatActivity() {
             binding.imageView10.visibility= View.INVISIBLE
             binding.imageView2.visibility= View.INVISIBLE
             binding.imageView.visibility= View.VISIBLE
-
-
         }
 
     }
